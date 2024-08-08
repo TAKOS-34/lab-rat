@@ -66,40 +66,36 @@ $(window).on('scroll', function () {
 	}
 });
 
-
 /*=============================================
 	=    		 Scroll Up  	         =
 =============================================*/
 if ($('.scroll-to-target').length) {
-  $(".scroll-to-target").on('click', function () {
-    var target = $(this).attr('data-target');
-    // animate
-    $('html, body').animate({
-      scrollTop: $(target).offset().top
-    }, 1000);
-
-  });
+	$(".scroll-to-target").on('click', function () {
+		var target = $(this).attr('data-target');
+		$('html, body').animate({
+		scrollTop: $(target).offset().top
+		}, 1000);
+	});
 }
-
 
 /*=============================================
 	=          One page Menu               =
 =============================================*/
 var scrollLink = $('.section-link');
-// Active link switching
 $(window).on('scroll', function () {
-	var scrollbarLocation = $(this).scrollTop();
-
-	scrollLink.each(function () {
-
-		var sectionOffset = $(this.hash).offset().top - 90;
-
-		if (sectionOffset <= scrollbarLocation) {
-			$(this).parent().addClass('active');
-			$(this).parent().siblings().removeClass('active');
-		}
-	});
+    var scrollbarLocation = $(this).scrollTop();
+    scrollLink.each(function () {
+        var targetElement = $(this.hash);
+        if (targetElement.length) {
+            var sectionOffset = targetElement.offset().top - 90;
+            if (sectionOffset <= scrollbarLocation) {
+                $(this).parent().addClass('active');
+                $(this).parent().siblings().removeClass('active');
+            }
+        }
+    });
 });
+
 //jQuery for page scrolling feature - requires jQuery Easing plugin
 $(function () {
 	$('a.section-link[href*="#"]:not([href="#"])').on('click', function () {
@@ -116,14 +112,12 @@ $(function () {
 	});
 });
 
-
 /*=============================================
 	=           Data Background             =
 =============================================*/
 $("[data-background]").each(function () {
 	$(this).css("background-image", "url(" + $(this).attr("data-background") + ")")
-})
-
+});
 
 /*=============================================
 =     Offcanvas Menu      =
