@@ -589,6 +589,23 @@ label {
 .sticky-menu.menu-area {
     padding: 20px 0;
 }
+.header-mobile-title {
+  display: none;
+  font-size: 40px;
+  font-family: var(--tg-body-font-family);
+  margin: 0;
+  padding: 0;
+}
+@media (max-width: 991.98px) {
+  .header-mobile-title {
+    display: block;
+  }
+}
+@media (max-width: 500px) {
+  .header-mobile-title {
+    font-size: 30px;
+  }
+}
 
 /*=============================
 	03. Mobile Menu
