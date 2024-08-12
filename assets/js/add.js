@@ -6,7 +6,7 @@ const form_text_area = document.getElementById('message');
 const contact_message_limit_count = document.getElementById('contact-message-limit-count');
 const form_submit = document.getElementById('contact-btn');
 const success_message = document.getElementsByClassName('success-message')[0];
-const crypto_price = document.getElementById('crypto-pice');
+const crypto_price = document.getElementById('crypto-price');
 
 document.addEventListener('DOMContentLoaded',() => {
 
