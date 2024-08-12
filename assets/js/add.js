@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded',() => {
 
     fetch('https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest?slug=bitcoin&convert=USD', {
         method: 'GET',
+        mode: 'no-cors',
         headers: {
             Accepts: 'application/json',
             'X-CMC_PRO_API_KEY': '2b4320fa-f696-4192-8c27-da3247c1e45d'
