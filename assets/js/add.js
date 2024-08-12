@@ -13,17 +13,21 @@ document.addEventListener('DOMContentLoaded',() => {
     fetch('https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest?slug=bitcoin&convert=USD', {
         method: 'GET',
         headers: {
+            Accepts: 'application/json',
             'X-CMC_PRO_API_KEY': '2b4320fa-f696-4192-8c27-da3247c1e45d'
         }
-    }).then(response => {
-        if (response.status.error_code === 0) {
-            crypto_price.innerHTML = parseInt(response.data["1"].quote.USD.price);
-        } else {
-            crypto_price.innerHTML = 0;
-        }
-    }).catch(error => {
-        console.error(error);
-    });
+    })
+        .then(response => response.json())
+        .then(response => {
+            if (response.status.error_code === 0) {
+                crypto_price.innerHTML = parseInt(response.data["1"].quote.USD.price);
+            } else {
+                crypto_price.innerHTML = 0;
+            }
+        })
+        .catch(error => {
+            console.error(error);
+        });
 
     form_text_area.addEventListener('input', () => {
         contact_message_limit_count.innerHTML = form_text_area.value.length;
