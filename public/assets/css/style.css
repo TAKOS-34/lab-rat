@@ -2840,9 +2840,6 @@ label {
   color: white;
   transition: 0.75s;
 }
-.container-contact input:focus {
-  padding: 20px;
-}
 .container-contact input:focus::placeholder {
   color: #DF86AA;
 }
@@ -2860,9 +2857,6 @@ label {
 .container-contact textarea::placeholder {
   color: white;
   transition: 0.75s;
-}
-.container-contact textarea:focus {
-  padding: 20px;
 }
 .container-contact textarea:focus::placeholder {
   color: #DF86AA;

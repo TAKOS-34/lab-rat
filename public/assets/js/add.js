@@ -20,22 +20,27 @@ document.addEventListener('DOMContentLoaded',() => {
 
     form_submit.addEventListener('click', () => {
         if (form.checkValidity()) {
-            const email = form_email.value.trim();
-            const subject = form_subject.value.trim();
-            const message = form_text_area.value.trim();
-            if (email && subject && message && email.length > 0 && email.length < 100 && subject.length > 0 && subject.length < 100 && message.length > 0 && message.length < 2000 ) {
-                const contact_infos = {
-                    email: email,
-                    subject: subject,
-                    message: message
-                }
-                // formspree
-                form.remove();
-                success_message.style.display = 'block';
-                container_form.style.height = '200px';
-            } else {
-                alert('Please fill all the form fields');
-            }
+            fetch('/contact', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    email: form_email.value.trim(),
+                    subject: form_subject.value.trim(),
+                    message: form_text_area.value.trim()
+                })
+            })
+                .then(res => res.json())
+                .then(res => {
+                    if (res.status) {
+                        form.remove();
+                        success_message.style.display = 'block';
+                        container_form.style.height = '200px';
+                    } else {
+                        alert('An error occurred, please try again');
+                    }
+                });
         } else {
             form.reportValidity();
         }
